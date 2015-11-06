@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--指向具体的dao  -->
+<mapper namespace="hxk.dao.UserDao">
+
+	<!--  开启二级缓存-->
+	<cache eviction="LRU" type="hxk.dao.redis.LoggingRedisCache"/>
+
+	<!--id是对应接口里面的方法名字  -->
+	<insert id="save" parameterType="user">
+		insert into user(name,pwd,role) values(#{name},#{pwd},#{role})
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="update" parameterType="user" >
+		update user set role=#{role},pwd=#{pwd} where name=#{name}
+	</update>
+	
+	<!-- 查找 -->
+	<select id="find" parameterType="string" resultType="user" useCache="true">
+		select * from user where name=#{name}
+	</select>
+	
+	<!-- 查找 -->
+	<select id="findAll"  resultType="user">
+		select * from user 
+	</select>
+	
+	<!-- 删除 -->
+	<delete id="delete" parameterType="string">
+		delete from user where name=#{name}
+	</delete>
+</mapper>
