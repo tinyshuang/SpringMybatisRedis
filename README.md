@@ -1,16 +1,19 @@
 # SpringMybatisRedis
 
-###项目说明 : 
-	这是一个spring-mybatis-redis整合的项目...使用spring-mvc做控制器..
+###项目说明 : 这是一个spring-mybatis-redis整合的项目...使用spring-mvc做控制器..
 	
-主要类在于hxk.dao.redis包的三个类..
-	-RedisCache   :   一个实现了Cache接口的缓存类..
-	-SerializeUtil    :   序列化工具类
-    -LoggingRedisCache : 自定义缓存的入口，继承MyBatis的loggingCache类
+#####主要类在于hxk.dao.redis包的三个类..  
+
+	-RedisCache   :   一个实现了Cache接口的缓存类..  
+	
+	-SerializeUtil    :   序列化工具类  
+	
+	-LoggingRedisCache : 自定义缓存的入口，继承MyBatis的loggingCache类  
+	
     
- ###配置 : 添加以下缓存配置
- <code>
- 	<configuration>
+ ###   配置 : 添加以下缓存配置 
+ 
+ 	`<configuration>
 	 <settings>
 	        <!-- 这个配置使全局的映射器启用或禁用缓存 -->
 	        <setting name="cacheEnabled" value="true" />
@@ -25,16 +28,14 @@
 	        <!-- 设置超时时间，它决定驱动等待一个数据库响应的时间。 -->
 	        <setting name="defaultStatementTimeout" value="25000" />
 	    </settings>
-	</configuration>
-	</code>
+	</configuration>`
 
 
-###mapper区别 :
-  <code>
-	<!--  开启二级缓存-->
+###  mapper区别 :
+
+	`<!--  开启二级缓存-->
 	<cache eviction="LRU" type="hxk.dao.redis.LoggingRedisCache"/>
 	
-	以及在select语句中使用useCache="true" 属性	
-	</code>
+	以及在select语句中使用useCache="true" 属性`	
 
 
