@@ -10,8 +10,9 @@
 	
 	-LoggingRedisCache : 自定义缓存的入口，继承MyBatis的loggingCache类  
 	
-    
- ###   配置 : 添加以下缓存配置 
+   
+   
+###   配置 : 添加以下缓存配置 
  
  	`<configuration>
 	 <settings>
